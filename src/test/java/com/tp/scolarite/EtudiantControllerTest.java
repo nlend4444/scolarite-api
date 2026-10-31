@@ -42,4 +42,13 @@ class EtudiantControllerTest {
         assertEquals("Jean", resultat.getPrenom());
         verify(repository).save(etudiant);
     }
+   
+    @Test
+    void listerRetourneUneListeVideSiAucunEtudiant() {
+        when(repository.findAll()).thenReturn(List.of());
+
+        List<Etudiant> resultat = controller.lister();
+
+        assertEquals(0, resultat.size());
+    } 
 }
